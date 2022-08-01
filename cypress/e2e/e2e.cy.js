@@ -12,11 +12,14 @@ context('Exercicio - Testes End-to-end - Fluxo de pedido', () => {
         Preenchendo todas opções no checkout
         E validando minha compra ao final */
 
-    beforeEach(() => {
-        cy.visit('/produtos')  
-        it('Login com sucesso usando Comando customizado', () => {
-            cy.login(dadosLogin.usuario, dadosLogin.senha)
+        it('', () => {
+            cy.visit('/minha-conta')  
+            cy.login('standard@ebac.com', 'teste@teste.com')
         });
+        
+        
+        beforeEach(() => {
+            cy.visit('/produtos')
     });
 
     afterEach(() => {
@@ -45,21 +48,10 @@ context('Exercicio - Testes End-to-end - Fluxo de pedido', () => {
          cy.get('.single_add_to_cart_button').click()
 
          //finalizando pedido
-         cy.get('.woocommerce-message > .button').click()
-         cy.get('.checkout-button').click()
-
-         cy.get('#billing_first_name').type("Luis")
-         cy.get('#billing_last_name').type("Fernando")
-         cy.get('#billing_company').type("EbacAula")
-         cy.get('#billing_address_1').type("Rua Castanheiras")
-         cy.get('#billing_address_2').type("Apartamento n.302")
-         cy.get('#billing_city').type("São Paulo")
-         cy.get('#billing_postcode').type("70070900")
-         cy.get('#billing_phone').type("61999999999")
-         cy.get('#billing_email').type("fernadodesampa@ebac.com")
-         cy.get('#terms').click()
-         cy.get('#place_order').click()
-
+        cy.addProduto('Beatriz', 'Barreto', 'EbacAula', 'Rua Castanheiras', '302', 'São Paulo', '70070900', '11999999999', 'fernadodesampa@ebac.com' )
+        cy.get('#terms').click()
+        cy.get('#place_order').click()
+        cy.get('.woocommerce-notice').should('contain', 'Obrigado. Seu pedido foi recebido.')
     });
 
 
