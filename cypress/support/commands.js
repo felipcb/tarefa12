@@ -32,29 +32,11 @@ Cypress.Commands.add('login', (usuario, senha) => {
     cy.get('.woocommerce-form > .button').click()
 })
 
-Cypress.Commands.add('addProduto',(item1, item2, item3, item4) => {
-     //produto 1
+Cypress.Commands.add('addProduto',(item) => {
      cy.visit('/produtos')
-     cy.get(item1).click()
+     cy.get(item).click()
      cy.get('.single_add_to_cart_button').click()
-
-     //produto 2
-     cy.visit('/produtos')
-     cy.get(item2).click()
-     cy.get('.single_add_to_cart_button').click()
-
-     //produto 3
-     cy.get('.logo-in-theme > .logo > a > .logo-img').click()
-     cy.contains(item3).click()
-     cy.get('.single_add_to_cart_button').click()
-    
-      //produto 4
-      cy.visit('/produtos')
-      cy.get(item4).click()
-      cy.get('.single_add_to_cart_button').click()
-}) 
-
-
+})
 Cypress.Commands.add('cadastro', (nome, sobrenome, empresa, endereco, numero, cidade, cep, telefone, email) => {
     cy.get('.woocommerce-message > .button').click()
     cy.get('.checkout-button').click()

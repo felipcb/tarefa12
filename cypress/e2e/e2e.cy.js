@@ -23,8 +23,11 @@ context('Exercicio - Testes End-to-end - Fluxo de pedido', () => {
 
   
     it('Deve adicionar 4 produtos ao carrinho e finalizar compra', () => {
-        cy.addProduto('.post-6588 > .product-block', '.post-6520', '[67772408] Produto Lgc2', '.post-6586 > .product-block')
-        
+        cy.addProduto('.post-6588 > .product-block') 
+        cy.addProduto('.post-6520')
+        cy.addProduto('.post-6589 > .product-block')
+        cy.addProduto('.post-6586 > .product-block')
+
         //finalizando pedido
         cy.cadastro('Beatriz', 'Barreto', 'EbacAula', 'Rua Castanheiras', '302', 'São Paulo', '70070900', '11999999999', 'fernadodesampa@ebac.com' )
         cy.get('#terms').click()
