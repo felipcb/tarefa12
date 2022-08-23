@@ -1,0 +1,30 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Clonar o repositorio') {
+            steps {
+                git branch: 'main', url: 'https://github.com/felipcb/tarefa12.git'
+            }
+        }
+        
+        stage('Instalar as dependências') {
+            steps {
+                powershell 'npm install -y'
+            }
+        }
+        
+                
+        stage('Instalar cypress') {
+            steps {
+                powershell 'npm install cypress --save-dev' 
+            }
+        } 
+        
+        stage('Executar os testes') {
+            steps {
+                powershell 'npx cypress run'
+            }
+        } 
+    }
+}
