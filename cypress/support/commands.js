@@ -32,9 +32,12 @@ Cypress.Commands.add('login', (usuario, senha) => {
     cy.get('.woocommerce-form > .button').click()
 })
 
-Cypress.Commands.add('addProduto',(item) => {
+Cypress.Commands.add('addProduto',(item, tamanho, cor) => {
      cy.visit('/produtos')
      cy.get(item).click()
+     cy.get(tamanho).click()
+     cy.get(cor).click()
+     
      cy.get('.single_add_to_cart_button').click()
 })
 Cypress.Commands.add('cadastro', (nome, sobrenome, empresa, endereco, numero, cidade, cep, telefone, email) => {

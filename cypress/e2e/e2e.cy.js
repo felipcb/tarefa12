@@ -23,10 +23,8 @@ context('Exercicio - Testes End-to-end - Fluxo de pedido', () => {
 
   
     it('Deve adicionar 4 produtos ao carrinho e finalizar compra', () => {
-        cy.addProduto('.post-6588 > .product-block') 
-        cy.addProduto('.post-6520')
-        cy.addProduto('.post-6589 > .product-block')
-        cy.addProduto('.post-6586 > .product-block')
+        cy.addProduto('.post-3073 > .product-block', '.button-variable-item-33', '.button-variable-item-Brown') 
+        cy.addProduto('.post-3374 > .product-block', '.button-variable-item-36', ':nth-child(2) > .value > .variable-items-wrapper > .variable-item')
 
         //finalizando pedido
         cy.cadastro('Beatriz', 'Barreto', 'EbacAula', 'Rua Castanheiras', '302', 'São Paulo', '70070900', '11999999999', 'fernadodesampa@ebac.com' )
